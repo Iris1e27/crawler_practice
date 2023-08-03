@@ -8,7 +8,7 @@ from yelp_spider.items import RestaurantItem
 class YelpSpider(scrapy.Spider):
     name = 'yelp'
     start_urls = [
-        'https://www.yelp.com/search?find_desc=Restaurants&find_loc=Manhattan%2C+NY']
+        'https://www.yelp.com/search?find_desc=Restaurants&find_loc=Brooklyn%2C+NY']
     next_start = 0
 
     # 添加headers
