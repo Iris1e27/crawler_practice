@@ -4,11 +4,13 @@ import scrapy
 
 from yelp_spider.items import RestaurantItem
 
+NY_AREA = 'Staten Island'
+
 
 class YelpSpider(scrapy.Spider):
     name = 'yelp'
     start_urls = [
-        'https://www.yelp.com/search?find_desc=Restaurants&find_loc=Brooklyn%2C+NY']
+        f'https://www.yelp.com/search?find_desc=Restaurants&find_loc={NY_AREA}%2C+NY']
     next_start = 0
 
     # 添加headers
@@ -88,7 +90,7 @@ class YelpSpider(scrapy.Spider):
             # 计算下一页的start值
             print('next start', self.next_start)
             # 构造下一页的URL
-            next_page_url = f'https://www.yelp.com/search?find_desc=Restaurants&find_loc=Manhattan%2C+NY&start={self.next_start}'
+            next_page_url = f'https://www.yelp.com/search?find_desc=Restaurants&find_loc={NY_AREA}%2C+NY&start={self.next_start}'
 
             # 发起新的请求继续爬取下一页
             yield scrapy.Request(next_page_url, headers=self.headers, callback=self.parse,

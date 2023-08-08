@@ -21,8 +21,10 @@ with open(subpage_file_path, 'w', newline='', encoding='utf-8', errors='ignore')
     writer = csv.DictWriter(csvfile, fieldnames=headers)
     if os.stat(subpage_file_path).st_size == 0:
         writer.writeheader()
+    i = 0  # counting
     for url in urls:
-        print(url)
+        i += 1
+        print(i, url)
 
         # Send a GET request to the URL
         response = requests.get(url)
@@ -78,7 +80,7 @@ with open(subpage_file_path, 'w', newline='', encoding='utf-8', errors='ignore')
 
         # Check if the address was found
         if address_elements:
-            address = address_elements[0].text_content().strip()
+            address = address_elements[0][0].text_content() + ", " + address_elements[0][1].text_content()
         else:
             address = 'Not Found'
 

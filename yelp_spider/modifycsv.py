@@ -25,8 +25,8 @@ df['Popular Dishes'] = df['Popular Dishes'].str.replace(']', '')
 df['Popular Dishes'] = df['Popular Dishes'].str.replace('\'', '')
 
 # Detailed Address
-insert_position = df['Detailed Address'].str.len() - 18
-df['Detailed Address'] = df.apply(lambda row: row['Detailed Address'][:insert_position[row.name]] + ", " + row['Detailed Address'][insert_position[row.name]:], axis=1)
+# insert_position = df['Detailed Address'].str.len() - 10 - len(NY_AREA)
+# df['Detailed Address'] = df.apply(lambda row: row['Detailed Address'][:insert_position[row.name]] + ", " + row['Detailed Address'][insert_position[row.name]:], axis=1)
 
 # 保存修改后的数据到新的CSV文件
 df.to_csv('modified_restaurants.csv', index=False)
